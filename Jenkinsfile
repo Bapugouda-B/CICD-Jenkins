@@ -12,20 +12,27 @@ pipeline {
         stage('Build and Deploy') {
             steps {
                 script {
-                    // Determine the current branch
-                    def branchName = sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim()
-
-                    // Build the Docker image
-                    sh 'docker build -t website .'
-
-                    if (branchName == 'master') {
-                        // If the branch is master, deploy the Docker container
-                        sh 'docker run -d -p 82:80 --name website --rm website'
-                    } else if (branchName == 'develop') {
-                        // If the branch is develop, only build the Docker image
-                        echo "Build complete. No deployment for develop branch."
+                    // Check if a container with the same name is running
+                    def containerExists = sh(script: 'docker ps -q -f name=website', returnStdout: true).trim()
+                    
+                    if (containerExists) {
+                        sh 'docker stop website || true'
+                    } else {
+                        echo "No running container with the name 'website' to stop."
                     }
+
+                    // Deploy the Docker container
+                    sh 'docker run -d -p 82:80 --name website --rm website'
                 }
+            }
+        }
+
+        stage('Build for Develop Branch') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                echo "Build complete for develop branch. No deployment performed."
             }
         }
     }
