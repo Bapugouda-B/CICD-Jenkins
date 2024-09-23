@@ -1,5 +1,9 @@
 pipeline {
     agent any
+
+    environment {
+        CI = "true"
+    }
     stages {
         stage('Build') {
             steps {
@@ -25,6 +29,7 @@ pipeline {
             }
             steps {
                 echo "Build complete for develop branch. No deployment performed."
+
             }
         }
     }
