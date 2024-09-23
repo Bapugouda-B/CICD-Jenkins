@@ -19,13 +19,5 @@ pipeline {
             }
         }
 
-        stage('Build for Develop Branch') {
-            when {
-                branch 'develop'
-            }
-            steps {
-                echo "Build complete for develop branch. No deployment performed."
-            }
-        }
     }
 }
