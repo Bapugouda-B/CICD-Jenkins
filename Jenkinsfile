@@ -31,7 +31,7 @@ pipeline {
                     }
 
                     // Deploy the Docker container
-                    sh 'docker run -d -p 82:80 --name website --rm website'
+                    sh 'docker run -d -p 82:80 --name website-container --rm website'
                 }
             }
         }
