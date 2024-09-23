@@ -1,22 +1,31 @@
 pipeline {
     agent any
-
+    environment {
+        CI = "true"
+    }
     stages {
-        stage('Clone Repository') {
+        stage('Build') {
             steps {
-                // Clone the repository
-                git url: 'https://github.com/Bapugouda-B/CICD-Jenkins'
+                sh 'docker build -t website .'
             }
         }
-
-        stage('Build and Deploy') {
+        
+        stage('Deploy to Production (Master)') {
+            when {
+                branch 'master'
+            }
             steps {
                 script {
                     // Check if a container with the same name is running
                     def containerExists = sh(script: 'docker ps -q -f name=website', returnStdout: true).trim()
                     
                     if (containerExists) {
+                        // Stop the running container
                         sh 'docker stop website || true'
+                        // Wait for Docker to fully stop the container
+                        sh 'docker rm website || true'
+                        echo "Waiting for container to stop..."
+                        sleep 5 // Small delay to ensure the container is removed
                     } else {
                         echo "No running container with the name 'website' to stop."
                     }
