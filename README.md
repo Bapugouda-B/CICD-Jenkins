@@ -1,3 +1,5 @@
+![CICD-FLOW](https://cms-cdn.katalon.com/banner_10_c502a533a1.png)
+
 # Integration of CICD with Jenkins
 
 This project demonstrates the implementation of a CI/CD pipeline using GitHub, Docker, and Git Workflow. The pipeline builds and deploys a website based on the branch where changes are committed.
