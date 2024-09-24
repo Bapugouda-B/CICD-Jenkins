@@ -10,6 +10,7 @@ This project demonstrates the implementation of a CI/CD pipeline using GitHub, D
 - [CI/CD Pipeline Workflow](#cicd-pipeline-workflow)
 - [Docker Configuration](#docker-configuration)
 - [Steps to Implement](#steps-to-implement)
+- [Project Screenshots](#screenshots)
 
 ## Prerequisites
 - GitHub repository with product code (link: [GitHub Repo](https://github.com/Bapugouda-B/CICD-Jenkins))
@@ -56,7 +57,7 @@ EXPOSE 82
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 ```
 
-## Step by Step Guide to Implement CI/CD Pipeline:
+## Steps to Implement
 
 
 ### Table of Contents
@@ -173,3 +174,15 @@ http://<ec2-public-ip>:82
 ```
 If everything is set up correctly, you should see the website running from the Docker container on your EC2 instance
 
+## Project Screenshots
+![EC2-Instance](./screenshots/vm.png)
+
+![Devlop-Branch](./screenshots/devBuild.png)
+
+![Maste-Branch](./screenshots/master.png)
+
+![Pipeline-Flow](./screenshots/devPipeline.png)
+
+![Pipeline-Flow](./screenshots/masterPipeline.png)
+
+![Application](./screenshots/WebsiteExposionPort82.png)
