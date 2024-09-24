@@ -10,7 +10,7 @@ This project demonstrates the implementation of a CI/CD pipeline using GitHub, D
 - [CI/CD Pipeline Workflow](#cicd-pipeline-workflow)
 - [Docker Configuration](#docker-configuration)
 - [Steps to Implement](#steps-to-implement)
-- [Project Screenshots](#screenshots)
+- [Project Screenshots](#project-screenshots)
 
 ## Prerequisites
 - GitHub repository with product code (link: [GitHub Repo](https://github.com/Bapugouda-B/CICD-Jenkins))
